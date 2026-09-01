@@ -1,1 +1,44 @@
+import random
+options = ("rock", "paper", "scissors")
+hand = random.choice(options)
+attempts = 0
+player_points = 0
+cpu_points = 0
 
+Enter = input("This is a game of rock, paper, scissors. You get 3 attempts - ready to play? (Y/N): ").upper()
+while not Enter == "Y" and not Enter == "N":
+    Enter = input("Invalid input - please select Y or N: ").upper()
+
+if Enter == "Y":
+    while attempts < 3 or cpu_points == 3 or player_points == 3:
+        hand = random.choice(options)
+        attempts += 1
+        choice1 = input("Select your choice: rock, paper, or scissors: ").lower()
+        if choice1 == hand:
+            print(f"Ooh that's a tie")
+        elif choice1 == "rock" and hand == "paper":
+            print("A point for me!")
+            cpu_points += 1
+        elif choice1 == "rock" and hand == "scissors":
+            print("A point for you!")
+            player_points += 1
+        elif choice1 == "paper" and hand == "rock":
+            print("A point for you!")
+            player_points += 1
+        elif choice1 == "paper" and hand == "scissors":
+            print("A point for me!")
+            cpu_points += 1
+        elif choice1 == "scissors" and hand == "rock":
+            print("A point for me!")
+            cpu_points += 1
+        elif choice1 == "scissors" and hand == "paper":
+            print("A point for you!")
+            cpu_points += 1
+    if player_points > cpu_points:
+        print(f"Nice one! You got me beat {player_points} to {cpu_points}!")
+    elif player_points < cpu_points:
+        print(f"Ha, you lose! It's {cpu_points} to {player_points}  ")
+    elif player_points == cpu_points:
+        print(f"It's a tie!")
+else:
+    print("Alrighty! See you next time!")
