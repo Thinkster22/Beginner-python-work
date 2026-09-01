@@ -5,6 +5,14 @@ attempts = 0
 player_points = 0
 cpu_points = 0
 
+def score_board(player_points, cpu_points):
+    if player_points > cpu_points:
+        return f"Nice one! You got me beat {player_points} to {cpu_points}!"
+    elif player_points < cpu_points:
+        return f"Ha, you lose! It's {cpu_points} to {player_points}  "
+    elif player_points == cpu_points:
+        return f"It's a tie!"
+
 Enter = input("This is a game of rock, paper, scissors. You get 3 attempts - ready to play? (Y/N): ").upper()
 while not Enter == "Y" and not Enter == "N":
     Enter = input("Invalid input - please select Y or N: ").upper()
@@ -33,12 +41,7 @@ if Enter == "Y":
             cpu_points += 1
         elif choice1 == "scissors" and hand == "paper":
             print("A point for you!")
-            cpu_points += 1
-    if player_points > cpu_points:
-        print(f"Nice one! You got me beat {player_points} to {cpu_points}!")
-    elif player_points < cpu_points:
-        print(f"Ha, you lose! It's {cpu_points} to {player_points}  ")
-    elif player_points == cpu_points:
-        print(f"It's a tie!")
+            player_points += 1
+    print(score_board(player_points, cpu_points))
 else:
     print("Alrighty! See you next time!")
